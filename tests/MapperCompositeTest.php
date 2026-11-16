@@ -11,11 +11,13 @@ use Atlas\Testing\CompositeDataSourceFixture;
 
 class MapperCompositeTest extends \PHPUnit\Framework\TestCase
 {
+    protected $mapperLocator;
+
     protected $mappers;
 
     // The $expect* properties are at the end, because they are so long
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $connection = (new CompositeDataSourceFixture())->exec();
         $this->mapperLocator = MapperLocator::new($connection);

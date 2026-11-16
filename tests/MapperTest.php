@@ -21,13 +21,15 @@ use Atlas\Testing\DataSource\Thread\ThreadRecordSet;
 
 class MapperTest extends \PHPUnit\Framework\TestCase
 {
+    protected $mapperLocator;
+
     use Assertions;
 
     protected $mappers;
 
     // The $expect* properties are at the end, because they are so long
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $connection = (new DataSourceFixture())->exec();
         $this->mapperLocator = MapperLocator::new($connection);

@@ -10,11 +10,14 @@ use PDO;
 
 class MapperSelectTest extends \PHPUnit\Framework\TestCase
 {
+    protected $mapperLocator;
+    protected $mapper;
+
     use Assertions;
 
     protected $select;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $connection = (new DataSourceFixture())->exec();
         $this->mapperLocator = MapperLocator::new($connection);

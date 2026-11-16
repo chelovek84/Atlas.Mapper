@@ -25,7 +25,7 @@ class ForeignCompositeTest extends TestCase
         $select = new class extends MapperSelect {
             public function __construct()
             {
-                parent::__construct(Connection::new('sqlite::memory:'), new Bind());
+                parent::__construct(Connection::new('sqlite::memory:', '', '', [\PDO::ATTR_STRINGIFY_FETCHES => true]), new Bind());
             }
         };
 

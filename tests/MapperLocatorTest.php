@@ -16,7 +16,7 @@ class MapperLocatorTest extends \PHPUnit\Framework\TestCase
 {
     protected $mapperLocator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $connection = (new DataSourceFixture())->exec();
         $this->mapperLocator = MapperLocator::new($connection);

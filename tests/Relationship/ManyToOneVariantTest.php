@@ -201,7 +201,9 @@ class ManyToOneVariantTest extends RelationshipTest
     {
         $rclass = new \ReflectionClass(get_class($object));
         $rprop = $rclass->getProperty($name);
-        $rprop->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $rprop->setAccessible(true);
+        }
         return $rprop->getValue($object);
     }
 }

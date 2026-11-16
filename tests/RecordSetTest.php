@@ -13,7 +13,7 @@ class RecordSetTest extends \PHPUnit\Framework\TestCase
     protected $record;
     protected $recordSet;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->row = new FakeRow([
             'id' => '1',
