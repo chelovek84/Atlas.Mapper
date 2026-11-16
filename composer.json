@@ -17,6 +17,24 @@
             "homepage": "https://github.com/atlasphp/Atlas.Mapper/contributors"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/chelovek84/Atlas.Pdo"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/chelovek84/Atlas.Query"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/chelovek84/Atlas.Table"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/chelovek84/Atlas.Testing"
+        }
+    ],
     "require": {
         "php": ">=7.1.0",
         "atlas/table": "~1.0"
