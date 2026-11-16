@@ -209,18 +209,18 @@ abstract class Mapper
 
     public function persist(
         Record $record,
-        SplObjectStorage $tracker = null
+        ?SplObjectStorage $tracker = null
     ) : void
     {
         if ($tracker === null) {
             $tracker = new SplObjectStorage();
         }
 
-        if ($tracker->contains($record)) {
+        if ($tracker->offsetExists($record)) {
             return;
         }
 
-        $tracker->attach($record);
+        $tracker->offsetSet($record);
 
         $this->relationships->persistBeforeNative($record, $tracker);
         $this->relationships->fixNativeRecord($record);

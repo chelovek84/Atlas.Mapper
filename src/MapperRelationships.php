@@ -176,7 +176,7 @@ abstract class MapperRelationships
         string $foreignSpec,
         string $persistencePriority,
         array $on = [],
-        string $throughRelatedName = null
+        ?string $throughRelatedName = null
     ) : Relationship
     {
         $this->assertRelatedName($relatedName);
@@ -273,7 +273,7 @@ abstract class MapperRelationships
         MapperSelect $select,
         string $nativeAlias,
         string $relatedName,
-        callable $sub = null
+        ?callable $sub = null
     ) : void
     {
         // clean up the specification

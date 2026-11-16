@@ -88,7 +88,7 @@ class ManyToOneVariant extends Relationship
         string $join,
         string $nativeAlias,
         string $foreignAlias,
-        callable $sub = null
+        ?callable $sub = null
     ) : void
     {
         throw Exception::cannotJoinOnVariantRelationships();
@@ -96,8 +96,10 @@ class ManyToOneVariant extends Relationship
 
     protected function getVariant($typeVal)
     {
-        if (isset($this->variants[$typeVal])) {
-            return $this->variants[$typeVal];
+        // PHP < 8.5 silently converted a null array key to ''
+        $key = $typeVal ?? '';
+        if (isset($this->variants[$key])) {
+            return $this->variants[$key];
         }
 
         throw Exception::noSuchType($this->nativeMapperClass, $typeVal);
@@ -105,7 +107,7 @@ class ManyToOneVariant extends Relationship
 
     public function stitchIntoRecords(
         array $nativeRecords,
-        callable $custom = null
+        ?callable $custom = null
     ) : void
     {
         if (! $nativeRecords) {
@@ -114,7 +116,7 @@ class ManyToOneVariant extends Relationship
 
         $nativeSubsets = [];
         foreach ($nativeRecords as $nativeRecord) {
-            $nativeSubsets[$nativeRecord->{$this->typeCol}][] = $nativeRecord;
+            $nativeSubsets[$nativeRecord->{$this->typeCol} ?? ''][] = $nativeRecord;
         }
 
         foreach ($nativeSubsets as $typeVal => $nativeSubset) {
